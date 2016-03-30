@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= @page_title if @page_title %></title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <header>
+    <ul>
+      <li id="title">Social Media</li>
+    </ul>
+  </header>
+  <main>
+    <nav>
+      <%= render(:partial => 'layouts/navigation', :locals => {:pages => @pages}) %>
+    </nav>
+    <% if !flash[:notice].blank? %>
+      <div class="notice">
+        <%= flash[:notice] %>
+      </div>
+    <% end %>
+  <div id="content">
+    <%= yield %>
+  </main>
+</body>
+</html>

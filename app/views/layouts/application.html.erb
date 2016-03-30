@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title><%= @page_title if @page_title %></title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "vendor/modernizr" %>
+    <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  <body>
+    <header>
+
+
+        <nav>
+          <div id="navbar"><%= render(:partial => 'layouts/navigation', :locals => {:pages => @pages}) %></div>
+  
+      </div>
+    </header>
+    <main>
+
+      <% if !flash[:notice].blank? %>
+        <div class="notice">
+          <%= flash[:notice] %>
+        </div>
+      <% end %>
+    <div id="content">
+      <%= yield %>
+    </main>
+  </body>
+</html>

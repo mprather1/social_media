@@ -1,0 +1,36 @@
+<head>
+    <script type='text/javascript'>
+        function loadXMLDoc(url) {
+        xmlhttp=new XMLHttpRequest();
+        xmlhttp.open(:GET:,url,false);
+        xmlhttp.send(null)
+        document.getElementById('test').innerHTML=xmlhttp.responseText;
+        }
+    </script>
+</head>
+<div id="test">
+    <h2>Click to let AJAX change this text</h2>
+</div>
+
+<div>
+    <button type="button" onclick="loadXMLDoc('test1.txt')">ClickMe</button>
+    <button type="button" onclick="loadXMLDoc('test2.txt')">ClickMe</button>
+
+</div>
+
+
+<form>
+    First Name: <input type="text" id="txt1" onkeyup="showHint(this.value)"/>
+
+</form>
+<p>Suggestions: <span id="txtHint"></span></p>
+<div class="row">
+  <div class="small-3 columns">
+    <p> test content </p>
+  </div>
+  <div class="small-9 columns">
+    <p>
+      testt small 9 test
+    </p>
+  </div>
+</div>

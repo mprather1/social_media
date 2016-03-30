@@ -1,0 +1,48 @@
+      <%# if comment.comment_image? %>
+        <%# image_tag comment.comment_image.thumb.url %>
+        <%# end %>
+<div class="row">
+  <div class="small-8 columns">
+    <table>
+
+      <tr>
+        <th>
+          <strong>Added by: </strong>
+        </th>
+        <td>
+          <%= link_to("#{comment.user_first_name} #{comment.user_last_name}", {:controller => 'users', :action => 'show', :id => comment.user.id}, :class => 'action show', :remote => true) %>
+        </td>
+        <td id="avatar">
+          <%= link_to(image_tag(comment.user_avatar.thumb.url), {:controller => 'users', :action => 'show', :id => comment.user.id }, :class => 'action show', :remote => true) %>
+        </td>
+      </tr>
+
+      <tr>
+        <th>
+          <strong>Created at: </strong>
+        </th>
+        <td>
+          <time><%= comment.created_at.strftime("%I:%M %p on %m/%d/%Y") %></time>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="small-4 columns">
+    <table>
+      <tr>
+        <th>
+          <strong>Comment:</strong>
+        </th>
+      </tr>
+      <tr>
+        <td>
+          <%= comment.body %>
+        </td>
+      </tr>
+
+
+
+    </table>
+  </div>
+</div>

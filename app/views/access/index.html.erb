@@ -1,0 +1,11 @@
+<% @page_title = "Main Menu" %>
+
+<div class="menu">
+  <h2>Main Menu </h2>
+
+<ul>
+  <li><%= link_to("Browse Users", :controller => 'users', :action => "index") %></li>
+  <li><%= link_to("Browse Pages", :controller => 'pages', :action => "index") %></li>
+  <li><%= link_to("Logout", :action => 'logout') %></li>
+</ul>
+</div>

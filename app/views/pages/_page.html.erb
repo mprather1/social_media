@@ -1,0 +1,55 @@
+<div id="show-page">
+	<%  page_title = page.title %>
+	<h2><%=  page.title %></h2>
+	<div class="row">
+
+		<div class="medium-4 columns">
+			<table>
+				<tr>
+					<th>Author</th>
+					<td><%= link_to( page.user.name, { :controller => 'users', :action => 'show', :id =>  page.user.id }, :class => 'action show', :remote => true) %></td>
+				</tr>
+				<tr>
+		  			<td><%= link_to(image_tag( page.user.image.thumb.url), { :controller => 'users', :action => 'show', :id =>  page.user.id }, :class => 'action show', :remote => true) %></td>
+				</tr>
+
+				<tr>
+					<th>Created At</th>
+					<td><time><%=  page.created_at.strftime("%I:%M %p on %m/%d/%Y") %></time></td>
+				</tr>
+			</table>
+		</div>
+
+		<div id="user-page-content" class="medium-8 columns">
+
+			<% if  page.submission_image? %>
+				<div id="user-avatar">
+	   			<%= image_tag  page.submission_image.normal.url %>
+				</div>
+			<% end %>
+			<br>
+			<article id="page-content">
+			<%=  page.content %>
+			</article>
+
+		</div>
+
+	</div>
+
+
+
+	<div>
+		<article id="comment-list">
+			<h3>Comments:</h3>
+			<%# content_tag :div, id: "cmt", data: {source:  page.comments} %>
+					<%= render  page.comments %>
+		</article>
+
+		<div>
+			<%= form_for([ page,  page.comments.build], :method => :post, :remote => true) do |f| %>
+				<%= render(:partial => 'comments/form', :locals => {:f => f}) %>
+			<% end %>
+		</div>
+
+	</div>
+</div

@@ -1,0 +1,22 @@
+<%= error_messages_for(@page) %>
+<%= form_for(:page, :url => {:action => 'create' }) do |page| %>
+<%# @page.user_id = session[:user_id] %>
+  <table summary="pages form fields">
+    <tr>
+      <th><%= page.label(:title, "Title") %></th>
+      <td><%= page.text_field(:title) %></td>
+    </tr>
+
+    <tr>
+      <th><%= page.label(:content, "Content") %></th>
+      <td><%= page.text_area(:content) %></td>
+    </tr>
+    <tr>
+      <th><%# page.label(:upload_image) %></th>
+      <td><%= page.file_field(:submission_image) %></td>
+    </tr>
+    <tr>
+      <td><%= submit_tag('Create Submission') %></td>
+    </tr>
+  </table>
+<% end %>

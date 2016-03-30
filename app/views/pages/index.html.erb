@@ -1,0 +1,46 @@
+<% @page_title = "Pages" %>
+<div><h3>Submissions</h3></div>
+
+<div><%= link_to(image_tag('plus_sign.png', :size => '11x11', :alt => '+') + " New Submission", {:action => 'new' }, :class => 'action new', :remote => true) %></div>
+
+<div class="row">
+  <div class="large-5 columns" id="index-show">
+    <div class= "pages index">
+      <table id="listing" summary="Page List">
+        <tr class="header">
+          <th>&nbsp;</th>
+          <th>Title</th>
+          <th>&nbsp;</th>
+          <th>Author</th>
+          <th>Created At</th>
+        </tr>
+        <% @pages.each do |page| %>
+        <tr id="<%= cycle('odd', 'even')%>">
+          <% if page.submission_image? %>
+
+            <td><%= link_to(image_tag(page.submission_image.thumb.url), {:action => 'show', :id => page.id }, :class => 'action show', :remote => true) %></td>
+          <% else %>
+
+            <td><%= link_to(image_tag(page.user.image.thumb.url), { :action => 'show', :id => page.id }, :class => 'action show', :remote => true) %></td>
+
+          <% end %>
+
+          <td><%= link_to(page.title, { :action => 'show', :id => page.id }, :remote => true) %></td>
+
+          <td><%= link_to(image_tag(page.user.image.thumb.url), { :controller => 'users', :action => 'show', :id => page.user.id }, :class => 'action show', :remote => true) %></td>
+
+          <td><%= link_to(page.user.name, { :controller => 'users', :action => 'show', :id => page.user.id }, :class => 'action show', :remote => true) %></td>
+
+          <td><%= page.created_at.strftime("%I:%M %p on %m/%d/%Y") %></td>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+    <div class="large-7 columns">
+      <div id="pages-article">
+
+      </div>
+    </div>
+  </div>
+</div>

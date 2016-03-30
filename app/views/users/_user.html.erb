@@ -1,0 +1,46 @@
+<% @page_title = user.name %>
+<div class="edit-user-button">
+	<% if session[:user_id] == user.id %>
+		<%= link_to("Edit Profile", {:action => 'edit', :id => user.id }, :class => 'action edit') %>
+	<% end %>
+</div>
+
+<div class="users show">
+	<h2><%= user.name %></h2>
+
+	<table summary="User detail view">
+	  <tr>
+			<th>&nbsp;</th>
+			<td><%= image_tag user.avatar.normal.url %></td>
+		</tr>
+		<tr>
+			<th>&nbsp;</th>
+			<td><%= mail_to(user.email) %></td>
+		</tr>
+	</table>
+</div>
+
+
+
+<div>
+	<table>
+		<tr>
+			<th>
+				<strong>Submissions by: </strong>
+			</th>
+			<td>
+				<%= user.name %>
+			</td>
+		</tr>
+		<% user.pages.each do |page| %>
+		<tr>
+				<% if page.submission_image? %>
+		 			<td><%= link_to(image_tag(page.submission_image.thumb.url), {:controller => 'pages', :action => 'show', :id => page.id }, :remote => true) %> </td>
+				<% else %>
+			 		<td><%= link_to(image_tag(@user.avatar.thumb.url), {:controller => 'pages', :action => 'show', :id => page.id }, :remote => true) %></td>
+				<% end %>
+			<td><%= link_to(page.title, {:controller => 'pages', :action => 'show', :id => page.id }, :remote => true)  %></td>
+			<% end %>
+		</tr>
+	</table>
+</div>

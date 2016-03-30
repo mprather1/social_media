@@ -1,0 +1,22 @@
+<% @page_title = "Users List" %>
+
+<div class= "user index">
+  <h2>Users</h2>
+
+  <table class="listing" summary="user List">
+    <tr class="header">
+      <th>&nbsp;</th>
+      <th>Name</th>
+      <th>Email</th>
+ 
+    </tr>
+    <% @users.each do |user| %>
+    <tr class="<%= cycle('odd', 'even')%>">
+      <td><%= image_tag user.avatar.thumb.url if user.avatar %></td>
+      <td><%= link_to(user.name, {:action => 'show', :id => user.id }, :class => 'action show') %></td>
+      <td><%= mail_to(user.email) %></td>
+   
+    </tr>
+    <% end %>
+  </table>
+</div>

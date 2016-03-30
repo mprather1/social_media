@@ -1,0 +1,8 @@
+  <ul>
+    <li><%= link_to_unless_current("Profile", :controller => 'users', :action => 'show', :id => session[:user_id], :remote => true) %></li>
+    <li><%= link_to_unless_current("Submissions", :controller => 'pages', :action => "index") %></li>
+    <li><%= link_to_unless_current("About", :controller => 'home_pages', :action => "home") %></li>
+    <li id="link"><%= link_to("Logout", :controller => 'access', :action => "logout") %></li>
+    <div id="site-title">Social Media</div>
+
+  </ul>

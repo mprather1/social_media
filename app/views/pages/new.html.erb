@@ -1,0 +1,10 @@
+
+<div class="pages new">
+	<h2>Create Pages</h2>
+
+	<%= form_for(:page, :url => {:action => 'create' }) do |f| %>
+
+	<%= render(:partial => 'form', :locals => {:page => page}) %>
+
+	<% end %>
+</div>
